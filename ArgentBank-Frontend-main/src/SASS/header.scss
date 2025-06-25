@@ -1,0 +1,22 @@
+header{
+    .head{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    img{
+        width: 40%;
+    }
+    .login{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        button{
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    }
+}

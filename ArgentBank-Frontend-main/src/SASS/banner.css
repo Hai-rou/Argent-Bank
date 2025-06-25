@@ -1,0 +1,34 @@
+.Banner {
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.Banner img {
+  height: 300px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.Banner .Info {
+  position: absolute;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  border: none;
+  height: 135px;
+  width: 255px;
+  padding: 10px;
+  left: 69%;
+  top: 18%;
+}
+.Banner .Info .message {
+  display: flex;
+  flex-direction: column;
+}
+.Banner .Info .message .subtitle {
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 0;
+}/*# sourceMappingURL=banner.css.map */
