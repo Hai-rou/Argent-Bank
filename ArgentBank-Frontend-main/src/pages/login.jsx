@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import "../SASS/login.css"
 
 const Login = () => {
   const navigate = useNavigate();
@@ -37,43 +38,49 @@ const Login = () => {
 
   return (
     <main className="login-page">
-      <h1>Connexion</h1>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>Email</label><br />
-          <input
-            type="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
+        <section className="Log-content">
+            <i className="fa-solid fa-circle-user"></i>
+            <h1>Se connecter</h1>
+            <form onSubmit={handleLogin}>
+                <div>
+                <label>Nom d'utilisateur</label>
+                <input
+                    className="item"
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                </div>
 
-        <div>
-          <label>Mot de passe</label><br />
-          <input
-            type="password"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
+                <div>
+                <label>Mot de passe</label>
+                <input
+                    className="item"
+                    type="password"
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                </div>
 
-        <div>
-          <label>
-            <input
-              type="checkbox"
-              checked={rememberMe}
-              onChange={(e) => setRememberMe(e.target.checked)}
-            />{" "}
-            Se souvenir de moi
-          </label>
-        </div>
+                <div>
+                <label>
+                    <input
+                    className="check"
+                    type="checkbox"
+                    checked={rememberMe}
+                    onChange={(e) => setRememberMe(e.target.checked)}
+                    />{" "}
+                    Se souvenir de moi
+                </label>
+                </div>
 
-        {error && <p className="error">{error}</p>}
+                {error && <p className="error">{error}</p>}
 
-        <button type="submit">Se connecter</button>
-      </form>
+                <button type="submit">Se connecter</button>
+            </form>
+        </section>
     </main>
   );
 };

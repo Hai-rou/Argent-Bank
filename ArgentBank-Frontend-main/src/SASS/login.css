@@ -1,0 +1,44 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  background-color: #12002b;
+  height: 600px;
+}
+.login-page .Log-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  width: 20%;
+  height: 300px;
+  background-color: white;
+  padding: 20px;
+  color: #2c3e50;
+}
+.login-page .Log-content form {
+  display: flex;
+  flex-direction: column;
+}
+.login-page .Log-content form label {
+  font-weight: bold;
+}
+.login-page .Log-content form .item {
+  width: 95%;
+  margin-top: 5px;
+  height: 30px;
+}
+.login-page .Log-content form .check {
+  margin-top: 10px;
+}
+.login-page .Log-content form button {
+  display: block;
+  border: none;
+  width: 100%;
+  padding: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  border-color: #00bc77;
+  background-color: #00bc77;
+  color: #fff;
+}/*# sourceMappingURL=login.css.map */
