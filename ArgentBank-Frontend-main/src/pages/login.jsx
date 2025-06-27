@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../SASS/login.css"
+import { useDispatch } from "react-redux";
+import { setToken } from "../Redux/userSlice";
 
 const Login = () => {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
@@ -16,6 +17,8 @@ const Login = () => {
     setError("");
 
     try {
+      console.log("Tentative login avec :", { email, password, rememberMe });
+
       const res = await axios.post("http://localhost:3001/api/v1/user/login", {
         email,
         password,
@@ -23,7 +26,10 @@ const Login = () => {
 
       const token = res.data.body.token;
 
-      // Stocker le token
+      // Redux
+      dispatch(setToken(token));
+
+      // Stockage
       if (rememberMe) {
         localStorage.setItem("token", token);
       } else {
@@ -32,55 +38,43 @@ const Login = () => {
 
       navigate("/profile");
     } catch (err) {
+      console.error("Erreur login :", err.response?.data || err.message);
       setError("Email ou mot de passe incorrect");
     }
   };
 
   return (
     <main className="login-page">
-        <section className="Log-content">
-            <i className="fa-solid fa-circle-user"></i>
-            <h1>Se connecter</h1>
-            <form onSubmit={handleLogin}>
-                <div>
-                <label>Nom d'utilisateur</label>
-                <input
-                    className="item"
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                </div>
+      <h1>Connexion</h1>
+      <form onSubmit={handleLogin}>
+        <label>Email</label>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
 
-                <div>
-                <label>Mot de passe</label>
-                <input
-                    className="item"
-                    type="password"
-                    required
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                </div>
+        <label>Mot de passe</label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
 
-                <div>
-                <label>
-                    <input
-                    className="check"
-                    type="checkbox"
-                    checked={rememberMe}
-                    onChange={(e) => setRememberMe(e.target.checked)}
-                    />{" "}
-                    Se souvenir de moi
-                </label>
-                </div>
+        <label>
+          <input
+            type="checkbox"
+            checked={rememberMe}
+            onChange={(e) => setRememberMe(e.target.checked)}
+          />
+          {" "}Se souvenir de moi
+        </label>
 
-                {error && <p className="error">{error}</p>}
-
-                <button type="submit">Se connecter</button>
-            </form>
-        </section>
+        {error && <p className="error">{error}</p>}
+        <button type="submit">Se connecter</button>
+      </form>
     </main>
   );
 };

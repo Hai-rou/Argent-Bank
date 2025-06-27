@@ -4,6 +4,7 @@ import { Homepage } from './pages/Homepage.jsx';
 import { Header } from "./components/Header.jsx"
 import { Footer } from "./components/Footer.jsx"
 import Login from "./pages/login.jsx"
+import User from "./pages/User.jsx"
 
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<User/>} />
       </Routes>
       <Footer />
     </BrowserRouter>
