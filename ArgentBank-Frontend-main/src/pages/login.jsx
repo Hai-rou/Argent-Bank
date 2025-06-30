@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { setToken } from "../Redux/userSlice";
+import { login } from "../Redux/authSlice.jsx";
+import "../SASS/login.css"
 
 const Login = () => {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const Login = () => {
       const token = res.data.body.token;
 
       // Redux
-      dispatch(setToken(token));
+      dispatch(login({token}));
 
       // Stockage
       if (rememberMe) {
@@ -45,36 +46,43 @@ const Login = () => {
 
   return (
     <main className="login-page">
-      <h1>Connexion</h1>
-      <form onSubmit={handleLogin}>
-        <label>Email</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-
-        <label>Mot de passe</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-
-        <label>
+      <div className="Log-content">
+        <div className="headLog">
+          <i className="fa-solid fa-circle-user"></i>
+          <h1>Se connecter</h1>
+        </div>
+        <form onSubmit={handleLogin}>
+          <label>Nom d'utilisateur</label>
           <input
-            type="checkbox"
-            checked={rememberMe}
-            onChange={(e) => setRememberMe(e.target.checked)}
+          className="item"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
           />
-          {" "}Se souvenir de moi
-        </label>
 
-        {error && <p className="error">{error}</p>}
-        <button type="submit">Se connecter</button>
-      </form>
+          <label>Mot de passe</label>
+          <input
+          className="item"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+
+          <label>
+            <input
+              type="checkbox"
+              checked={rememberMe}
+              onChange={(e) => setRememberMe(e.target.checked)}
+            />
+            {" "}Se souvenir de moi
+          </label>
+
+          {error && <p className="error">{error}</p>}
+          <button type="submit">Se connecter</button>
+        </form>
+      </div>
     </main>
   );
 };

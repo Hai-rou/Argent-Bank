@@ -1,10 +1,9 @@
 .user-page {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   background-color: #12002b;
-  height: 700px;
+  height: 650px;
   color: white;
   text-align: center;
 }
@@ -20,8 +19,10 @@
   background-color: #00bc77;
   color: #fff;
   font-size: 0.6rem;
+  cursor: pointer;
 }
 .user-page .account {
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,10 +37,14 @@
   background-color: white;
   padding: 15px;
 }
+.user-page .account .Item .sub-item {
+  text-align: start;
+}
 .user-page .account button {
   display: block;
   border: none;
   width: 20%;
+  height: 50px;
   padding: 8px;
   font-size: 1.1rem;
   font-weight: bold;
@@ -47,4 +52,6 @@
   border-color: #00bc77;
   background-color: #00bc77;
   color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
 }/*# sourceMappingURL=user.css.map */
