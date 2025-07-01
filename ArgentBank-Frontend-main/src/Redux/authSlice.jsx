@@ -16,13 +16,11 @@ const authSlice = createSlice({
       state.user = null;
     },
     setProfile: (state, action) => {
-      if (state.user) {
-        state.user = {
-          ...state.user,
-          ...action.payload, 
-        };
-      }
-    },
+      state.user = {
+        ...state.user,
+        ...action.payload
+      };
+    }
   },
 });
 

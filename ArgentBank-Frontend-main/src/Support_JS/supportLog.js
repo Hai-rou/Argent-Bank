@@ -13,7 +13,7 @@ const SupportLog = () => {
       console.log("[SupportLog] User connecté :", user);
       console.log("[SupportLog] Token :", user.token);
     } else {
-      console.log("[SupportLog] Aucun utilisateur connecté");
+      //console.log("[SupportLog] Aucun utilisateur connecté");
     }
   }, [user]);
 

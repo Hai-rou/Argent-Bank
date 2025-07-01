@@ -7,6 +7,8 @@ import { setProfile } from "../Redux/authSlice";
 
 const User = () => {
   const [user, setUser] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [newName, setNewName] = useState({ firstName: "", lastName: "" });
   const token = useSelector((state) => state.auth.user?.token);
   const dispatch = useDispatch();
 
@@ -36,6 +38,37 @@ const User = () => {
         });
     }, [token, dispatch]);
 
+      const handleEditClick = () => {
+    setIsEditing(true);
+    setNewName({ firstName: user.firstName, lastName: user.lastName });
+  };
+
+  const handleSave = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.put(
+        "http://localhost:3001/api/v1/user/profile",
+        { firstName: newName.firstName, lastName: newName.lastName },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      console.log("Données envoyées PUT :", { firstName: newName.firstName, lastName: newName.lastName });
+
+      // Re-fetch profil à jour
+      const profileRes = await axios.get(
+        "http://localhost:3001/api/v1/user/profile",
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      console.log("Nouveau profil reçu :", profileRes.data.body);
+
+      setUser(profileRes.data.body);
+      dispatch(setProfile(profileRes.data.body));
+      setIsEditing(false);
+
+    } catch (err) {
+      console.error("Erreur lors de la mise à jour du profil :", err);
+    }
+  };
+
 
   if (!user) {
     return <p>Chargement des infos utilisateur...</p>;
@@ -43,8 +76,54 @@ const User = () => {
 
   return (
     <main className="user-page">
-      <h1>Bienvenue à nouveau <br/> {user.firstName} {user.lastName} !</h1>
-      <button>Modifier le nom</button>
+      <h1>
+        {isEditing
+          ? "Edit user info"
+          : <>Bienvenue à nouveau <br />{user.firstName} {user.lastName} !</>
+        }
+      </h1>        
+
+      {isEditing ? (
+
+        <form onSubmit={handleSave}>
+          <label>User name</label>
+          <input
+            type="text"
+            value={`${newName.firstName} ${newName.lastName}`.trim()}
+            onChange={(e) => {
+              // Split sur espace
+              const [first, ...last] = e.target.value.split(" ");
+              setNewName({
+                firstName: first || "",
+                lastName: last.join(" ") || ""
+              });
+            }}
+            required
+          />
+
+          <label>First Name</label>
+          <input
+            type="text"
+            value={newName.firstName}
+            onChange={(e) => setNewName({ ...newName, firstName: e.target.value })}
+            required
+          />
+
+          <label>Last Name</label>
+          <input
+            type="text"
+            value={newName.lastName}
+            onChange={(e) => setNewName({ ...newName, lastName: e.target.value })}
+            required
+          />
+
+          <button type="submit">Sauvegarder</button>
+          <button type="button" onClick={() => setIsEditing(false)}>Annuler</button>
+        </form>
+
+      ) : (
+        <button onClick={handleEditClick}>Modifier le nom</button>
+      )}
       <section className="account">
         <div className="Item">
           <div className="sub-item">
