@@ -6,12 +6,14 @@ import { Footer } from "./components/Footer.jsx"
 import Login from "./pages/login.jsx"
 import User from "./pages/User.jsx"
 import SupportLog from './Support_JS/supportLog.js';
+import AuthInitializer from './Support_JS/AuthInitializer.js';
 
 
 const App = () => {
 
   return (  
     <BrowserRouter>
+    <AuthInitializer />
     <SupportLog />        
       <Header />
       <Routes>

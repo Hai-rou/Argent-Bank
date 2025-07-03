@@ -8,9 +8,9 @@ import "../SASS/login.css"
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(localStorage.getItem("email") || "");
   const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
+  const [rememberMe, setRememberMe] = useState(localStorage.getItem("rememberMe") === "true");
   const [error, setError] = useState("");
 
   const handleLogin = async (e) => {
@@ -33,8 +33,12 @@ const Login = () => {
       // Stockage
       if (rememberMe) {
         localStorage.setItem("token", token);
+        localStorage.setItem("email", email);
+        localStorage.setItem("rememberMe", "true");
       } else {
         sessionStorage.setItem("token", token);
+        localStorage.removeItem("email");
+        localStorage.removeItem("rememberMe");
       }
 
       navigate("/profile");

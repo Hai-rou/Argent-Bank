@@ -34,16 +34,48 @@
         align-items: center;
         gap: 20px;
         margin-top: 20px;
-        .Item{
+        .main-item{
             width: 100%;
-            display: flex;
-            justify-content: space-between;
-            color: black;
-            background-color: white;
-            padding: 15px;
-            .sub-item{
-                text-align: start;
+            table{
+                width: 100%;
+                background-color: grey;
+                margin-top: 20px;
+                border-collapse: separate;
+                border-spacing: 0 20px;
+                padding: 5px;
+                .description{
+                    background-color: gray;
+                }
+                tr {
+                    background-color: #00bc77;
+
+                    td {
+                    background-color: #00bc77;
+                    height: 50px;
+
+                        &:first-child {
+                            border-top-left-radius: 5px;
+                            border-bottom-left-radius: 5px;
+                        }
+
+                        &:last-child {
+                            border-top-right-radius: 5px;
+                            border-bottom-right-radius: 5px;
+                        }
+                    }
+                }       
             }
+            .Item{
+                display: flex;
+                justify-content: space-between;
+                color: black;
+                background-color: white;
+                padding: 15px;
+                .sub-item{
+                    text-align: start;
+                }
+            }
+        
         }
         button{
             display: block;

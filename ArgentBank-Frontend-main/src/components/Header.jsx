@@ -24,7 +24,9 @@ export function Header() {
           {user && user.firstName ? (
             <>
               <span>{user.firstName}</span>
-              <button onClick={handleLogout}>Déconnexion</button>
+              <Link to ="/login">
+                <button onClick={handleLogout}>Déconnexion</button>
+              </Link>
             </>
           ) : (
             <Link to="/login">

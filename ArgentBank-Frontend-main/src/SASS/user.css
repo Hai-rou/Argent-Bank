@@ -36,15 +36,43 @@
   gap: 20px;
   margin-top: 20px;
 }
-.user-page .account .Item {
+.user-page .account .main-item {
   width: 100%;
+}
+.user-page .account .main-item table {
+  width: 100%;
+  background-color: grey;
+  margin-top: 20px;
+  border-collapse: separate;
+  border-spacing: 0 20px;
+  padding: 5px;
+}
+.user-page .account .main-item table .description {
+  background-color: gray;
+}
+.user-page .account .main-item table tr {
+  background-color: #00bc77;
+}
+.user-page .account .main-item table tr td {
+  background-color: #00bc77;
+  height: 50px;
+}
+.user-page .account .main-item table tr td:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.user-page .account .main-item table tr td:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.user-page .account .main-item .Item {
   display: flex;
   justify-content: space-between;
   color: black;
   background-color: white;
   padding: 15px;
 }
-.user-page .account .Item .sub-item {
+.user-page .account .main-item .Item .sub-item {
   text-align: start;
 }
 .user-page .account button {

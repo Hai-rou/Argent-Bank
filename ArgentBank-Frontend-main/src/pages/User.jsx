@@ -3,6 +3,7 @@ import "../SASS/user.css"
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setProfile } from "../Redux/authSlice";
+import React from "react";
 
 
 const User = () => {
@@ -11,7 +12,22 @@ const User = () => {
   const [newName, setNewName] = useState({ firstName: "", lastName: "" });
   const token = useSelector((state) => state.auth.user?.token);
   const dispatch = useDispatch();
+  const [activeAccount , setActiveAccount] = useState(null)
+  const [expandedRow, setExpandedRow] = useState(null)
 
+  const accounts = [
+    { id: 'checking', title: 'Vérification de la Banque Argent (x8349)', balance: 'Solde disponible' },
+    { id: 'savings', title: 'Caisse d\'épargne Argent Bank (x6712)', balance: 'Solde disponible' },
+    { id: 'credit', title: 'Carte de crédit Argent Bank (x8349)', balance: 'Solde actuel' }
+  ];
+
+  const transactions = [
+    { date: '01/07/2025', description: 'Transaction exemple 1', amount: '+8€', solde: '+100€'},
+    { date: '02/07/2025', description: 'Transaction exemple 2', amount: '+8€', solde: '+100€' }
+  ]
+  const toggleDetails = (idx) => {
+    setExpandedRow(prev => (prev === idx ? null : idx))
+  }
 
   useEffect(() => {
       // console.log("Token récupéré :", token);
@@ -125,28 +141,67 @@ const User = () => {
         <button onClick={handleEditClick}>Modifier le nom</button>
       )}
       <section className="account">
-        <div className="Item">
-          <div className="sub-item">
-            <h3>Vérification de la Banque Argent (x8349)</h3>
-            <p>Solde disponible</p>
-          </div>
-          <button>Afficher les transactions</button>
-        </div>
-        <div className="Item">
-          <div className="sub-item">
-            <h3>Caisse d'épargne Argent Bank (x6712)</h3>
-            <p>Solde disponible</p>
-          </div>
-          <button>Afficher les transactions</button>
-        </div>  
-        <div className="Item">
-          <div className="sub-item">
-            <h3>Carte de crédit Argent Bank (x8349)</h3>
-            <p>Solde actuel</p>
-          </div>
-          <button>Afficher les transactions</button>
-        </div>
-          
+
+        {accounts.map((acc, idx) => (
+          (!activeAccount || activeAccount === acc.id) && (
+            <div key={acc.id} className="main-item">
+              <div className="Item">
+                <div className="sub-item">
+                  <h3>{acc.title}</h3>
+                  <p>{acc.balance}</p>
+                </div>
+
+                {activeAccount === acc.id ? (
+                  <button onClick={() => setActiveAccount(null)}>Retour</button>
+                ) : (
+                  <button onClick={() => setActiveAccount(acc.id)}>Afficher les transactions</button>
+                )}
+              </div>
+
+              {activeAccount === acc.id && (
+                <div className="table">
+                  <table>
+                    <thead>
+                      <tr className="description">
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Montant</th>
+                        <th>Solde</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {transactions.map((t, rowIdx) => (
+                        <React.Fragment key={rowIdx}>
+                          <tr>
+                            <td>{t.date}</td>
+                            <td>{t.description}</td>
+                            <td>{t.amount}</td>
+                            <td>{t.solde}</td>
+                            <td>
+                              <button onClick={() => toggleDetails(rowIdx)}>
+                                {expandedRow === rowIdx ? '▼' : '▶'}
+                              </button>
+                            </td>
+                          </tr>
+                          {expandedRow === rowIdx && (
+                            <tr>
+                              <td colSpan="4">
+                                <div className="details">
+                                  Détails supplémentaires pour {t.description}
+                                </div>
+                              </td>
+                            </tr>
+                          )}
+                        </React.Fragment>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+          )
+        ))}
+
       </section>
     </main>
   );

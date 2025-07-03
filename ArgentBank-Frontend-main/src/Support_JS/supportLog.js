@@ -10,8 +10,8 @@ const SupportLog = () => {
 
   useEffect(() => {
     if (user?.firstName) {
-      console.log("[SupportLog] User connecté :", user);
-      console.log("[SupportLog] Token :", user.token);
+      //console.log("[SupportLog] User connecté :", user);
+      //console.log("[SupportLog] Token :", user.token);
     } else {
       //console.log("[SupportLog] Aucun utilisateur connecté");
     }
