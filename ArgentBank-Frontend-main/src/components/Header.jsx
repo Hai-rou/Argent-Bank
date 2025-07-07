@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../Redux/authSlice.jsx";
 import  Logo  from "../assets/images/argentBankLogo.webp"
@@ -6,11 +6,14 @@ import "../SASS/header.css"
 
 
 export function Header() {
-  const user = useSelector((state) => state.auth.user);
+  const token = useSelector((state) => state.auth.token);
+  const userName = useSelector((state) => state.user.userName)
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     dispatch(logout());
+    navigate("/login")
   };
 
   return (
@@ -21,12 +24,10 @@ export function Header() {
         </Link>
         <div className="login">
           <i className="fa-solid fa-circle-user"></i>
-          {user && user.firstName ? (
+          {token && userName ? (
             <>
-              <span>{user.firstName}</span>
-              <Link to ="/login">
+              <span>{userName}</span>
                 <button onClick={handleLogout}>Déconnexion</button>
-              </Link>
             </>
           ) : (
             <Link to="/login">

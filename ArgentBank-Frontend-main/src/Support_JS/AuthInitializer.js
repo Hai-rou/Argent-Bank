@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { login, setProfile } from "../Redux/authSlice.jsx"
+import { setProfile } from "../Redux/userSlice.jsx"
+import { login } from "../Redux/authSlice.jsx"
 import axios from "axios";
 
 
@@ -11,7 +12,7 @@ const AuthInitializer = () => {
         const storedToken = localStorage.getItem("token") || sessionStorage.getItem("token")
         if (storedToken) {
             
-            dispatch(login({ token : storedToken}))
+            dispatch(login(storedToken))
 
             // Appelle l'API pour récupérer le profil
             axios.get("http://localhost:3001/api/v1/user/profile", {

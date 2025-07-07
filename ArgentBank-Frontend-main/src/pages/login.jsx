@@ -4,6 +4,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { login } from "../Redux/authSlice.jsx";
 import "../SASS/login.css"
+import { setProfile } from "../Redux/userSlice.jsx";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -27,9 +28,6 @@ const Login = () => {
 
       const token = res.data.body.token;
 
-      // Redux
-      dispatch(login({token}));
-
       // Stockage
       if (rememberMe) {
         localStorage.setItem("token", token);
@@ -40,6 +38,15 @@ const Login = () => {
         localStorage.removeItem("email");
         localStorage.removeItem("rememberMe");
       }
+
+      const profileRes = await axios.get(
+        "http://localhost:3001/api/v1/user/profile",
+        { headers: { Authorization: `Bearer ${token}`}}
+      )
+
+      //Redux 
+      dispatch(login(token))
+      dispatch(setProfile(profileRes.data.body))
 
       navigate("/profile");
     } catch (err) {

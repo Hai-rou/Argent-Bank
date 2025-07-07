@@ -2,23 +2,29 @@ import { useEffect, useState } from "react";
 import "../SASS/user.css"
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { setProfile } from "../Redux/authSlice";
+import { setProfile } from "../Redux/userSlice.jsx";
 import React from "react";
 
 
 const User = () => {
-  const [user, setUser] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
-  const [newName, setNewName] = useState({ firstName: "", lastName: "" });
-  const token = useSelector((state) => state.auth.user?.token);
+  const token = useSelector((state) => state.auth.token);
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const [activeAccount , setActiveAccount] = useState(null)
-  const [expandedRow, setExpandedRow] = useState(null)
+  const [activeAccount , setActiveAccount] = useState(null);
+  const [expandedRow, setExpandedRow] = useState(null);
+
+  const [newName, setNewName] = useState({
+    userName: "",
+    firstName: "",
+    lastName: ""
+  });
+
 
   const accounts = [
-    { id: 'checking', title: 'Vérification de la Banque Argent (x8349)', balance: 'Solde disponible' },
-    { id: 'savings', title: 'Caisse d\'épargne Argent Bank (x6712)', balance: 'Solde disponible' },
-    { id: 'credit', title: 'Carte de crédit Argent Bank (x8349)', balance: 'Solde actuel' }
+    { id: 'checking', title: 'Vérification de la Banque Argent (x8349)', amount: '2 082.79 $', balance: 'Solde disponible' },
+    { id: 'savings', title: 'Caisse d\'épargne Argent Bank (x6712)', amount: '10 928,42 $', balance: 'Solde disponible' }, 
+    { id: 'credit', title: 'Carte de crédit Argent Bank (x8349)', amount: '184,30 $', balance: 'Solde disponible' }
   ];
 
   const transactions = [
@@ -30,44 +36,46 @@ const User = () => {
   }
 
   useEffect(() => {
-      // console.log("Token récupéré :", token);
-      // console.log("Token récupéré depuis Redux :", token);
+    if (!token) {
+      console.warn("Pas de token, on ne fait pas la requête");
+      return;
+    }
 
+    axios.get("http://localhost:3001/api/v1/user/profile", {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    .then((res) => {
+      console.log("Réponse reçue :", res);
+      dispatch(setProfile(res.data.body));
+    })
+    .catch((err) => {
+      console.error("Erreur lors de la récupération du profil :", err);
+    });
+  }, [token, dispatch]);
 
-      if (!token) {
-        console.warn("Aucun token trouvé !");
-        return;
-      }
-
-        axios.get("http://localhost:3001/api/v1/user/profile", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => {
-          console.log("Réponse reçue :", res);
-          setUser(res.data.body);
-          dispatch(setProfile(res.data.body)); // ✅ met à jour Redux avec le profil
-        })
-        .catch((err) => {
-          console.error("Erreur lors de la récupération du profil :", err);
-        });
-    }, [token, dispatch]);
 
       const handleEditClick = () => {
-    setIsEditing(true);
-    setNewName({ firstName: user.firstName, lastName: user.lastName });
-  };
+        if (!user) return; // Sécurité
+        setIsEditing(true);
+        setNewName({
+          userName: user.userName || "",
+          firstName: user.firstName || "",
+          lastName: user.lastName || ""
+        });
+      };
+
 
   const handleSave = async (e) => {
     e.preventDefault();
     try {
       await axios.put(
         "http://localhost:3001/api/v1/user/profile",
-        { firstName: newName.firstName, lastName: newName.lastName },
+        { 
+          userName: newName.userName 
+        },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      console.log("Données envoyées PUT :", { firstName: newName.firstName, lastName: newName.lastName });
+      console.log("Données envoyées PUT :", { userName: newName.userName });
 
       // Re-fetch profil à jour
       const profileRes = await axios.get(
@@ -76,7 +84,6 @@ const User = () => {
       );
       console.log("Nouveau profil reçu :", profileRes.data.body);
 
-      setUser(profileRes.data.body);
       dispatch(setProfile(profileRes.data.body));
       setIsEditing(false);
 
@@ -102,39 +109,35 @@ const User = () => {
       {isEditing ? (
 
         <form onSubmit={handleSave}>
-          <label>User name</label>
-          <input
-            type="text"
-            value={`${newName.firstName} ${newName.lastName}`.trim()}
-            onChange={(e) => {
-              // Split sur espace
-              const [first, ...last] = e.target.value.split(" ");
-              setNewName({
-                firstName: first || "",
-                lastName: last.join(" ") || ""
-              });
-            }}
-            required
-          />
+          <div className="formInp">
+              <label>User name: <input
+              type="text"
+              value={newName.userName}
+              onChange={(e) => setNewName({...newName, userName: e.target.value})}
+              required
+            /></label>
+            
 
-          <label>First Name</label>
-          <input
-            type="text"
-            value={newName.firstName}
-            onChange={(e) => setNewName({ ...newName, firstName: e.target.value })}
-            required
-          />
+            <label>First Name: <input
+              type="text"
+              value={newName.firstName}
+              disabled
+            /></label>
+            
 
-          <label>Last Name</label>
-          <input
-            type="text"
-            value={newName.lastName}
-            onChange={(e) => setNewName({ ...newName, lastName: e.target.value })}
-            required
-          />
+            <label>Last Name: <input
+              type="text"
+              value={newName.lastName}
+              disabled
+            /></label>
+            
+          </div>
+          <div className="btn">
+            <button type="submit">Sauvegarder</button>
+            <button type="button" onClick={() => setIsEditing(false)}>Annuler</button>
+          </div>
+          
 
-          <button type="submit">Sauvegarder</button>
-          <button type="button" onClick={() => setIsEditing(false)}>Annuler</button>
         </form>
 
       ) : (
@@ -148,6 +151,7 @@ const User = () => {
               <div className="Item">
                 <div className="sub-item">
                   <h3>{acc.title}</h3>
+                  <p className="amount">{acc.amount}</p>
                   <p>{acc.balance}</p>
                 </div>
 
@@ -179,15 +183,24 @@ const User = () => {
                             <td>{t.solde}</td>
                             <td>
                               <button onClick={() => toggleDetails(rowIdx)}>
-                                {expandedRow === rowIdx ? '▼' : '▶'}
+                                <i className={`fa-solid ${expandedRow === rowIdx ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
                               </button>
                             </td>
                           </tr>
                           {expandedRow === rowIdx && (
-                            <tr>
-                              <td colSpan="4">
+                            <tr className="sub-row">
+                              <td colSpan="5">
                                 <div className="details">
-                                  Détails supplémentaires pour {t.description}
+                                  <div className="colum1">
+                                    <p>Transaction type</p>
+                                    <p>Category</p>
+                                    <p>Note</p>
+                                  </div>
+                                  <div className="colum2">
+                                    <p>Electronic</p>
+                                    <p>Food <i className="fa-solid fa-pencil"></i></p>
+                                    <p>Lorem ipsum <i className="fa-solid fa-pencil"></i></p>
+                                  </div>
                                 </div>
                               </td>
                             </tr>
@@ -198,6 +211,7 @@ const User = () => {
                   </table>
                 </div>
               )}
+
             </div>
           )
         ))}
