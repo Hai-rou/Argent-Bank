@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     background-color: #12002b;
-    height: 800px;
+    height: 690px;
     color: white;
     text-align: center;
     form{
@@ -53,63 +53,14 @@
         margin-top: 20px;
         .main-item{
             width: 100%;
-            table{
-                width: 100%;
-                background-color: grey;
-                margin-top: 20px;
-                border-collapse: separate;
-                border-spacing: 0 20px;
-                padding: 5px;
-                .description{
-                    background-color: gray;
-                }
-                tr {
-                    background-color: #00bc77;
-                    .act{
-                        border-collapse: collapse;
-                    }
-
-                    td {
-                    background-color: #00bc77;
-                    height: 50px;
-
-                        &:first-child {
-                            border-top-left-radius: 5px;
-                            border-bottom-left-radius: 5px;
-                        }
-
-                        &:last-child {
-                            border-top-right-radius: 5px;
-                            border-bottom-right-radius: 5px;
-                        }
-                    }
-                }
-                tbody{
-                    .sub-row{
-                        .details{
-                            display: grid;
-                            grid-template-columns: 1fr 1fr 1fr 1fr;
-                            text-align: start;
-                            .colum1{
-                                padding-left: 20%;
-                            }
-                            .colum2{
-                                padding-left: 25%;
-                                .fa-pencil{
-                                    font-size: 15px;
-                                    padding-left: 10px;
-                                }
-                            }
-                        }
-                    }
-                }      
-            }
             .Item{
                 display: flex;
                 justify-content: space-between;
                 color: black;
                 background-color: white;
                 padding: 15px;
+                margin-bottom: 10px;
+                border-radius: 10px;
                 .sub-item{
                     text-align: start;
                     h3{
@@ -126,6 +77,65 @@
                     }
                 }
             }
+            .transaction-grid{
+                display: flex;
+                flex-direction: column;
+                background-color: white;
+                border-radius: 10px;
+                color: black;
+                .grid-label{
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    height: 30px;
+                    align-items: center;
+                    font-weight: bold;
+                }
+                .transaction-card{
+                    display: flex;
+                    flex-direction: column;
+                    background-color: #00bc77;
+                    color: white;
+                    margin: 10px;
+                    border-radius: 10px;
+                    .grid-row{
+                        display: grid;
+                        grid-template-columns: repeat(4, 1fr);
+                        height: 40px;
+                        align-items: center;
+                        .grid-row-full{
+                            position: absolute;
+                            margin-top: -30px;
+                            left: 84%;
+                            button{
+                                background-color: #00bc77;
+                                height: 10px;
+                            }
+                        }
+                    }
+                    .transaction-details{
+                        display: grid;
+                        grid-template-columns: repeat(4, 1fr);
+                        justify-items: center;
+                        .detail-label{
+                            display: flex;
+                            flex-direction: column;
+                            gap: 10px;
+                            text-align: start;
+                        }
+                        .detail-info{
+                            display: flex;
+                            flex-direction: column;
+                            text-align: start;
+                            gap: 10px;
+                            margin-bottom: 10px;
+                            .fa-solid{
+                                margin-left: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+            
         
         }
         button{

@@ -28,7 +28,7 @@ const User = () => {
   ];
 
   const transactions = [
-    { date: '01/07/2025', description: 'Transaction exemple 1', amount: '+8€', solde: '+100€'},
+    { date: '01/07/2025', description: 'Golden Sun Bakery', amount: '+8€', solde: '+100€'},
     { date: '02/07/2025', description: 'Transaction exemple 2', amount: '+8€', solde: '+100€' }
   ]
   const toggleDetails = (idx) => {
@@ -163,54 +163,48 @@ const User = () => {
               </div>
 
               {activeAccount === acc.id && (
-                <div className="table">
-                  <table>
-                    <thead>
-                      <tr className="description">
-                        <th>Date</th>
-                        <th>Description</th>
-                        <th>Montant</th>
-                        <th>Solde</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {transactions.map((t, rowIdx) => (
-                        <React.Fragment key={rowIdx}>
-                          <tr>
-                            <td>{t.date}</td>
-                            <td>{t.description}</td>
-                            <td>{t.amount}</td>
-                            <td>{t.solde}</td>
-                            <td>
-                              <button onClick={() => toggleDetails(rowIdx)}>
-                                <i className={`fa-solid ${expandedRow === rowIdx ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
-                              </button>
-                            </td>
-                          </tr>
-                          {expandedRow === rowIdx && (
-                            <tr className="sub-row">
-                              <td colSpan="5">
-                                <div className="details">
-                                  <div className="colum1">
-                                    <p>Transaction type</p>
-                                    <p>Category</p>
-                                    <p>Note</p>
-                                  </div>
-                                  <div className="colum2">
-                                    <p>Electronic</p>
-                                    <p>Food <i className="fa-solid fa-pencil"></i></p>
-                                    <p>Lorem ipsum <i className="fa-solid fa-pencil"></i></p>
-                                  </div>
-                                </div>
-                              </td>
-                            </tr>
-                          )}
-                        </React.Fragment>
-                      ))}
-                    </tbody>
-                  </table>
+                <div className="transaction-grid">
+                  <div className="grid-label">
+                    <span className="label">Date :</span>
+                    <span className="label">Description :</span>
+                    <span className="label">Montant :</span>
+                    <span className="label">Solde :</span> 
+                  </div>
+                  {transactions.map((t, rowIdx) => (
+                    <div key={rowIdx} className="transaction-card">
+                      <div className="grid-row">
+                        <span className="value">{t.date}</span>
+                        <span className="value">{t.description}</span>
+                        <span className="value">{t.amount}</span>
+                        <span className="value">{t.solde}</span>
+                        <div className="grid-row-full">
+                        <button onClick={() => toggleDetails(rowIdx)}>
+                          <i className={`fa-solid ${expandedRow === rowIdx ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
+                        </button>
+                      </div>
+                      </div>
+
+                      
+
+                      {expandedRow === rowIdx && (
+                        <div className="transaction-details">
+                          <div className="detail-label">
+                            <span>Type de transaction</span>
+                            <span>Catégorie</span>
+                            <span>Note</span>
+                          </div>
+                          <div className="detail-info">
+                            <span>Electonic</span>
+                            <span>Food <i className="fa-solid fa-pencil"></i></span>
+                            <span>Lorem ipsum <i className="fa-solid fa-pencil"></i></span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
                 </div>
               )}
+
 
             </div>
           )
