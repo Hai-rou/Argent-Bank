@@ -1,0 +1,30 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1440px;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+main .error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+main .error h1 {
+  color: #FF6060;
+  font-size: 100px;
+  margin: 0;
+}
+main .error p {
+  color: #FF6060;
+  text-align: center;
+  font-weight: 500;
+}
+main a {
+  margin-top: 50px;
+  margin-bottom: 100px;
+  font-weight: 500;
+  color: black;
+}/*# sourceMappingURL=error.css.map */

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../SASS/user.css"
+import "../SASS/pages/user.css"
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setProfile } from "../Redux/userSlice.jsx";
@@ -98,7 +98,7 @@ const User = () => {
   }
 
   return (
-    <main className="user-page">
+    <div className="user-page">
       <h1>
         {isEditing
           ? "Edit user info"
@@ -211,7 +211,7 @@ const User = () => {
         ))}
 
       </section>
-    </main>
+    </div>
   );
 };
 

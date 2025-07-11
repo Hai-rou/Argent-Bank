@@ -14,17 +14,37 @@
             align-items: center;
             h3{
                 text-align: center;
+                font-size: 1.1rem;
+                color: black;
             }
             img{
-                width: 100px;
+                width: 25%;
                 border: 10px solid #00bc77;
                 border-radius: 50%;
                 padding: 1rem;
             }
             p{
-                font-size: 15px;
+                font-size: 13px;
                 text-align: center;
             }
         }
     }
 }
+@media (max-width: 1024px){
+        .home{
+            .bodyHome{
+                flex-direction: column;
+                align-items: center;
+                .box{
+                    width: 100%;
+                    margin-bottom: 10%;
+                    h3{
+                        margin-block-end: 15px;
+                    }
+                    p{
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }

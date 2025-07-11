@@ -4,7 +4,7 @@
   margin-bottom: 20px;
 }
 .Banner img {
-  height: 300px;
+  height: 350px;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -17,10 +17,9 @@
   justify-content: center;
   align-content: center;
   border: none;
-  height: 135px;
-  width: 255px;
-  padding: 10px;
-  left: 69%;
+  width: 25%;
+  padding: 2rem;
+  left: 60%;
   top: 18%;
 }
 .Banner .Info .message {
@@ -28,7 +27,7 @@
   flex-direction: column;
 }
 .Banner .Info .message .subtitle {
-  font-weight: bold;
-  font-size: 1rem;
+  font-weight: 900;
+  font-size: 1.2rem;
   margin: 0;
 }/*# sourceMappingURL=banner.css.map */

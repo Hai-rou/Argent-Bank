@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../Redux/authSlice.jsx";
 import  Logo  from "../assets/images/argentBankLogo.webp"
-import "../SASS/header.css"
+import "../SASS/components/header.css"
 
 
 export function Header() {

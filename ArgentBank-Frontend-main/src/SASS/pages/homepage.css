@@ -17,14 +17,33 @@
 }
 .home .bodyHome .box h3 {
   text-align: center;
+  font-size: 1.1rem;
+  color: black;
 }
 .home .bodyHome .box img {
-  width: 100px;
+  width: 25%;
   border: 10px solid #00bc77;
   border-radius: 50%;
   padding: 1rem;
 }
 .home .bodyHome .box p {
-  font-size: 15px;
+  font-size: 13px;
   text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .home .bodyHome {
+    flex-direction: column;
+    align-items: center;
+  }
+  .home .bodyHome .box {
+    width: 100%;
+    margin-bottom: 10%;
+  }
+  .home .bodyHome .box h3 {
+    margin-block-end: 15px;
+  }
+  .home .bodyHome .box p {
+    margin: 0;
+  }
 }/*# sourceMappingURL=homepage.css.map */

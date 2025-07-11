@@ -2,7 +2,7 @@ import  Banner  from "../components/Banner.jsx"
 import  Chat  from "../assets/images/icon-chat.webp"
 import  Money  from "../assets/images/icon-money.webp"
 import  Security  from "../assets/images/icon-security.webp"
-import "../SASS/homepage.css"
+import "../SASS/pages/homepage.css"
 
 export function Homepage () {
     return (

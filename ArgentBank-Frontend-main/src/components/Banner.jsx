@@ -1,5 +1,5 @@
 import  Tree  from "../assets/images/bank-tree.webp"
-import "../SASS/banner.css"
+import "../SASS/components/banner.css"
 
 function Banner () {
     return (

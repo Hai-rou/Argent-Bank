@@ -6,23 +6,23 @@
     .Log-content{
         display: flex;
         flex-direction: column;
-        margin-top: 40px;
-        width: 20%;
-        height: 300px;
+        margin-top: -16%;
+        width: 22%;
         background-color: white;
-        padding: 20px;
-        color: #2c3e50;
+        padding: 30px;
         .headLog{
             display: flex;
             flex-direction: column;
             align-items: center;
+            h1{
+                font-size: 1.25rem;
+            }
         }
         form{
             display: flex;
             flex-direction: column;
             label{
-                font-weight: bold;
-
+                font-size: 1rem;
             }
             .item{
                 width: 95%;

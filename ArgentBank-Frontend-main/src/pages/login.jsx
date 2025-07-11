@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { login } from "../Redux/authSlice.jsx";
-import "../SASS/login.css"
+import "../SASS/pages/login.css"
 import { setProfile } from "../Redux/userSlice.jsx";
 
 const Login = () => {

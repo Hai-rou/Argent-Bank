@@ -1,4 +1,4 @@
-import "../SASS/footer.css"
+import "../SASS/components/footer.css"
 
 export function Footer () {
     return(
