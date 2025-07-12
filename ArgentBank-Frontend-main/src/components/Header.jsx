@@ -23,7 +23,6 @@ export function Header() {
           <img src={Logo} alt="Logo de l'entreprise" />
         </Link>
         <div className="login">
-          <i className="fa-solid fa-circle-user"></i>
           {token && userName ? (
             <>
               <span>{userName}</span>
@@ -31,7 +30,7 @@ export function Header() {
             </>
           ) : (
             <Link to="/login">
-              <button>Se connecter</button>
+              <button><i className="fa-solid fa-circle-user"></i>Se connecter</button>
             </Link>
           )}
         </div>

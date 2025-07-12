@@ -18,7 +18,7 @@
   align-content: center;
   border: none;
   width: 25%;
-  padding: 2rem;
+  padding: 20px;
   left: 60%;
   top: 18%;
 }
@@ -30,4 +30,30 @@
   font-weight: 900;
   font-size: 1.2rem;
   margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .Banner img {
+    height: 300px;
+  }
+  .Banner .Info {
+    left: 40%;
+    top: 14%;
+  }
+  .Banner .Info .message .subtitle {
+    font-size: 1rem;
+  }
+  .Banner .Info .message p {
+    font-size: 0.75rem;
+  }
+}
+@media (max-width: 768px) {
+  .Banner .Info {
+    width: 200px;
+    left: 12%;
+    top: 120px;
+  }
+  .Banner .Info .message {
+    flex-wrap: nowrap;
+  }
 }/*# sourceMappingURL=banner.css.map */

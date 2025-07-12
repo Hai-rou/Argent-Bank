@@ -3,6 +3,7 @@ header{
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: 5px 20px;
     }
     img{
         width: 40%;
@@ -11,12 +12,25 @@ header{
         display: flex;
         align-items: center;
         gap: 5px;
+        font-size: 0.9rem;
+        
         button{
             border: none;
             background: none;
             cursor: pointer;
             font-weight: bold;
             color: #2c3e50;
+            font-size: 1rem;
+            .fa-circle-user{
+                margin-right: 5px;
+            }
+        }
+    }
+}
+@media (max-width: 768px){
+    header{
+        img{
+            width: 90%;
         }
     }
 }

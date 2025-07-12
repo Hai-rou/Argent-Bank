@@ -37,13 +37,19 @@
     align-items: center;
   }
   .home .bodyHome .box {
-    width: 100%;
+    width: 90%;
     margin-bottom: 10%;
   }
+  .home .bodyHome .box img {
+    width: 12%;
+  }
   .home .bodyHome .box h3 {
+    font-size: 1.2rem;
     margin-block-end: 15px;
   }
   .home .bodyHome .box p {
+    width: 88%;
+    font-size: 1rem;
     margin: 0;
   }
 }/*# sourceMappingURL=homepage.css.map */
