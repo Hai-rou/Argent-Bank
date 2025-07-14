@@ -55,5 +55,14 @@
         }
     }
 @media (max-width: 768px){
-    
+    .home{
+        .bodyHome{
+            .box{
+                margin-top: 50px;
+                img{
+                    width: 90px;
+                }
+            }
+        }
+    }
 }

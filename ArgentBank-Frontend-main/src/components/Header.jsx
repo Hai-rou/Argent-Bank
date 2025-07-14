@@ -25,9 +25,14 @@ export function Header() {
         <div className="login">
           {token && userName ? (
             <>
-              <i className="fa-solid fa-circle-user"></i>
-              <span>{userName}</span>
-                <button onClick={handleLogout}><i className="fa-solid fa-right-from-bracket"></i>Se déconnexion</button>
+              <div className="element">
+                <i className="fa-solid fa-circle-user"></i>
+                <span>{userName}</span>
+              
+                <Link to="/">
+                  <button onClick={handleLogout}><i className="fa-solid fa-right-from-bracket"></i>Se déconnecter</button>
+                </Link>
+              </div>
             </>
           ) : (
             <Link to="/login">

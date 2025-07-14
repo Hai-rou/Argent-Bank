@@ -2,23 +2,16 @@
     display: flex;
     width: 100%;
     margin-bottom: 20px;
-    img{
-        height: 350px;
-        width: 100%;
-        object-fit: cover;
-    }
     .Info{
         position: absolute;
+        top: 10%;
+        right: 5%;
         background-color: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-content: center;
         border: none;
         width: 25%;
+        height: 170px;
+        margin: 2rem;
         padding: 20px;
-        left: 60%;
-        top: 18%;
         .message{
             display: flex;
             flex-direction: column;
@@ -33,12 +26,13 @@
 
 @media (max-width: 1024px){
     .Banner{
-        img{
-            height: 300px;
-        }
         .Info{
-            left: 40%;
-            top: 14%;
+            position: relative;
+            top: 20%;
+            right: 0%;
+            width: 200px;
+            height: 150px;
+            margin: 0 auto;
             .message{
                 .subtitle{
                     font-size: 1rem;
@@ -51,16 +45,3 @@
     }
 }
 
-@media (max-width: 768px){
-    .Banner{
-
-        .Info{
-            width: 200px;
-            left: 32%;
-            top: 120px;
-            .message{
-                flex-wrap: nowrap;
-            }
-        }
-    }
-}

@@ -16,6 +16,9 @@ header{
         span{
             font-weight: bold;
         }
+        .fa-circle-user{
+            margin-right: 5px;
+        }
         button{
             border: none;
             background: none;
@@ -24,21 +27,21 @@ header{
             color: #2c3e50;
             font-size: 1rem;
             .fa-solid{
-                margin-right: 10px;
+                margin-right: 5px;
             }
         }
     }
 }
 @media (max-width: 768px){
     header{
-
         img{
-            width: 100px;
+            width: 150px;
         }
         .login{
+            font-size: 0.7rem;
+
             button{
-                width: 120px;
-                font-size: 15px;
+                font-size: 0.7rem;
             }
         }
     }

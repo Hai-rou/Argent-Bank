@@ -1,6 +1,5 @@
 header .head {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 5px 20px;
 }
@@ -13,6 +12,9 @@ header .login {
   gap: 5px;
   font-size: 0.9rem;
 }
+header .login span {
+  font-weight: bold;
+}
 header .login button {
   border: none;
   background: none;
@@ -21,13 +23,17 @@ header .login button {
   color: #2c3e50;
   font-size: 1rem;
 }
-header .login button .fa-circle-user {
-  margin-right: 5px;
+header .login button .fa-solid {
+  margin-right: 10px;
 }
 
 @media (max-width: 768px) {
   header img {
-    width: 90%;
+    width: 150px;
+  }
+  header .login button {
+    width: 120px;
+    font-size: 15px;
   }
 }
 .Banner {
@@ -35,24 +41,16 @@ header .login button .fa-circle-user {
   width: 100%;
   margin-bottom: 20px;
 }
-.Banner img {
-  height: 350px;
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
 .Banner .Info {
   position: absolute;
+  top: 15%;
+  right: 5%;
   background-color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
   border: none;
-  width: 25%;
+  width: 30%;
+  height: 170px;
+  margin: 2rem;
   padding: 20px;
-  left: 60%;
-  top: 18%;
 }
 .Banner .Info .message {
   display: flex;
@@ -60,33 +58,23 @@ header .login button .fa-circle-user {
 }
 .Banner .Info .message .subtitle {
   font-weight: 900;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   margin: 0;
 }
 
 @media (max-width: 1024px) {
-  .Banner img {
-    height: 300px;
-  }
   .Banner .Info {
-    left: 40%;
-    top: 14%;
+    position: relative;
+    top: 20%;
+    right: 0%;
+    width: 200px;
+    margin: 0 auto;
   }
   .Banner .Info .message .subtitle {
     font-size: 1rem;
   }
   .Banner .Info .message p {
     font-size: 0.75rem;
-  }
-}
-@media (max-width: 768px) {
-  .Banner .Info {
-    width: 200px;
-    left: 12%;
-    top: 120px;
-  }
-  .Banner .Info .message {
-    flex-wrap: nowrap;
   }
 }
 footer {
@@ -149,6 +137,14 @@ footer {
     margin: 0;
   }
 }
+@media (max-width: 768px) {
+  .home .bodyHome .box {
+    margin-top: 50px;
+  }
+  .home .bodyHome .box img {
+    width: 90px;
+  }
+}
 .login-page {
   display: flex;
   justify-content: center;
@@ -159,7 +155,7 @@ footer {
   display: flex;
   flex-direction: column;
   margin-top: -16%;
-  width: 22%;
+  width: 200px;
   background-color: white;
   padding: 30px;
 }
@@ -235,14 +231,13 @@ footer {
 .user-page button {
   display: block;
   border: none;
-  width: 10%;
+  width: 150px;
   padding: 8px;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   font-weight: bold;
   border-color: #00bc77;
   background-color: #00bc77;
   color: #fff;
-  font-size: 0.6rem;
   cursor: pointer;
 }
 .user-page .account {
@@ -353,6 +348,56 @@ footer {
   cursor: pointer;
 }
 
+@media (max-width: 1024px) {
+  .user-page {
+    height: 900px;
+  }
+  .user-page .account .main-item .transaction-grid .transaction-card {
+    font-size: 0.7rem;
+  }
+  .user-page .account .main-item .transaction-grid .transaction-card .grid-row .grid-row-full {
+    left: 82%;
+    margin-top: -35px;
+  }
+  .user-page .account .main-item .transaction-grid .grid-label {
+    font-size: 0.8rem;
+  }
+  .user-page .account .main-item .Item {
+    flex-direction: column;
+    padding: 20px;
+  }
+  .user-page .account .main-item .Item .sub-item h3 {
+    font-size: 1rem;
+  }
+  .user-page .account .main-item .Item .sub-item .amount {
+    font-size: 2rem;
+  }
+  .user-page .account .main-item .Item button {
+    width: 100%;
+    height: 40px;
+  }
+}
+@media (max-width: 768px) {
+  .user-page {
+    height: 950px;
+  }
+  .user-page .account .main-item .transaction-grid .grid-label {
+    font-size: 9px;
+  }
+  .user-page .account .main-item .transaction-grid .transaction-card {
+    font-size: 8px;
+  }
+  .user-page .account .main-item .transaction-grid .transaction-card .grid-row .grid-row-full {
+    left: 79%;
+    margin-top: -28px;
+  }
+  .user-page .account .main-item .transaction-grid .transaction-card .grid-row .grid-row-full button {
+    font-size: 9px;
+  }
+  .user-page .account .main-item .Item .sub-item h3 {
+    font-size: 0.8rem;
+  }
+}
 main {
   display: flex;
   flex-direction: column;

@@ -16,6 +16,9 @@ header .login {
 header .login span {
   font-weight: bold;
 }
+header .login .fa-circle-user {
+  margin-right: 5px;
+}
 header .login button {
   border: none;
   background: none;
@@ -25,15 +28,17 @@ header .login button {
   font-size: 1rem;
 }
 header .login button .fa-solid {
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 @media (max-width: 768px) {
   header img {
-    width: 100px;
+    width: 150px;
+  }
+  header .login {
+    font-size: 0.7rem;
   }
   header .login button {
-    width: 120px;
-    font-size: 15px;
+    font-size: 0.7rem;
   }
 }/*# sourceMappingURL=header.css.map */

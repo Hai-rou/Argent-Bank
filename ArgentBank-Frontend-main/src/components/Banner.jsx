@@ -3,8 +3,12 @@ import "../SASS/components/banner.css"
 
 function Banner () {
     return (
-        <section className="Banner">
-            <img src={Tree} alt="Pot rempli de pièces" />
+        <section className="Banner" style={{
+            backgroundImage: `url(${Tree})`,
+            backgroundSize: 'cover',
+            backgroundPosition: '0% 33%',
+            height: '300px'
+            }}>
             <div className="Info">
                 <div className="message">
                     <p className="subtitle">Aucun frais.</p>

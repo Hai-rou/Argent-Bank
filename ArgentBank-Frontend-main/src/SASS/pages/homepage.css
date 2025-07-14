@@ -52,4 +52,12 @@
     font-size: 1rem;
     margin: 0;
   }
+}
+@media (max-width: 768px) {
+  .home .bodyHome .box {
+    margin-top: 50px;
+  }
+  .home .bodyHome .box img {
+    width: 90px;
+  }
 }/*# sourceMappingURL=homepage.css.map */
