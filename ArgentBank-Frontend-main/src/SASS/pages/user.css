@@ -34,14 +34,13 @@
 .user-page button {
   display: block;
   border: none;
-  width: 10%;
+  width: 150px;
   padding: 8px;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   font-weight: bold;
   border-color: #00bc77;
   background-color: #00bc77;
   color: #fff;
-  font-size: 0.6rem;
   cursor: pointer;
 }
 .user-page .account {
@@ -150,4 +149,55 @@
   color: #fff;
   font-size: 0.9rem;
   cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .user-page {
+    height: 900px;
+  }
+  .user-page .account .main-item .transaction-grid .transaction-card {
+    font-size: 0.7rem;
+  }
+  .user-page .account .main-item .transaction-grid .transaction-card .grid-row .grid-row-full {
+    left: 82%;
+    margin-top: -35px;
+  }
+  .user-page .account .main-item .transaction-grid .grid-label {
+    font-size: 0.8rem;
+  }
+  .user-page .account .main-item .Item {
+    flex-direction: column;
+    padding: 20px;
+  }
+  .user-page .account .main-item .Item .sub-item h3 {
+    font-size: 1rem;
+  }
+  .user-page .account .main-item .Item .sub-item .amount {
+    font-size: 2rem;
+  }
+  .user-page .account .main-item .Item button {
+    width: 100%;
+    height: 40px;
+  }
+}
+@media (max-width: 768px) {
+  .user-page {
+    height: 950px;
+  }
+  .user-page .account .main-item .transaction-grid .grid-label {
+    font-size: 9px;
+  }
+  .user-page .account .main-item .transaction-grid .transaction-card {
+    font-size: 8px;
+  }
+  .user-page .account .main-item .transaction-grid .transaction-card .grid-row .grid-row-full {
+    left: 79%;
+    margin-top: -28px;
+  }
+  .user-page .account .main-item .transaction-grid .transaction-card .grid-row .grid-row-full button {
+    font-size: 9px;
+  }
+  .user-page .account .main-item .Item .sub-item h3 {
+    font-size: 0.8rem;
+  }
 }/*# sourceMappingURL=user.css.map */

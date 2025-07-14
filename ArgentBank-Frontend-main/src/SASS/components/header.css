@@ -13,6 +13,9 @@ header .login {
   gap: 5px;
   font-size: 0.9rem;
 }
+header .login span {
+  font-weight: bold;
+}
 header .login button {
   border: none;
   background: none;
@@ -21,12 +24,16 @@ header .login button {
   color: #2c3e50;
   font-size: 1rem;
 }
-header .login button .fa-circle-user {
-  margin-right: 5px;
+header .login button .fa-solid {
+  margin-right: 10px;
 }
 
 @media (max-width: 768px) {
   header img {
-    width: 90%;
+    width: 100px;
+  }
+  header .login button {
+    width: 120px;
+    font-size: 15px;
   }
 }/*# sourceMappingURL=header.css.map */

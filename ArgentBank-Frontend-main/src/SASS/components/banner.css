@@ -50,7 +50,7 @@
 @media (max-width: 768px) {
   .Banner .Info {
     width: 200px;
-    left: 12%;
+    left: 32%;
     top: 120px;
   }
   .Banner .Info .message {
