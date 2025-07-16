@@ -3,7 +3,6 @@ import "../SASS/pages/user.css"
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setProfile } from "../Redux/userSlice.jsx";
-import React from "react";
 
 
 const User = () => {

@@ -1,5 +1,6 @@
 header .head {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 5px 20px;
 }
@@ -15,6 +16,9 @@ header .login {
 header .login span {
   font-weight: bold;
 }
+header .login .fa-circle-user {
+  margin-right: 5px;
+}
 header .login button {
   border: none;
   background: none;
@@ -24,16 +28,18 @@ header .login button {
   font-size: 1rem;
 }
 header .login button .fa-solid {
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 @media (max-width: 768px) {
   header img {
     width: 150px;
   }
+  header .login {
+    font-size: 0.7rem;
+  }
   header .login button {
-    width: 120px;
-    font-size: 15px;
+    font-size: 0.7rem;
   }
 }
 .Banner {
@@ -43,11 +49,11 @@ header .login button .fa-solid {
 }
 .Banner .Info {
   position: absolute;
-  top: 15%;
+  top: 10%;
   right: 5%;
   background-color: white;
   border: none;
-  width: 30%;
+  width: 25%;
   height: 170px;
   margin: 2rem;
   padding: 20px;
@@ -58,7 +64,7 @@ header .login button .fa-solid {
 }
 .Banner .Info .message .subtitle {
   font-weight: 900;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   margin: 0;
 }
 
@@ -68,6 +74,7 @@ header .login button .fa-solid {
     top: 20%;
     right: 0%;
     width: 200px;
+    height: 150px;
     margin: 0 auto;
   }
   .Banner .Info .message .subtitle {

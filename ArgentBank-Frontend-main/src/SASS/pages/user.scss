@@ -205,6 +205,14 @@
                     }
                     .transaction-card{
                         font-size: 8px;
+                        .transaction-details{
+                            .detail-label{
+                                padding-left: 10px;
+                            }
+                            .detail-info{
+                                padding-left: 10px;
+                            }
+                        }
                         .grid-row{
                             .grid-row-full{
                                 left: 79%;

@@ -190,6 +190,12 @@
   .user-page .account .main-item .transaction-grid .transaction-card {
     font-size: 8px;
   }
+  .user-page .account .main-item .transaction-grid .transaction-card .transaction-details .detail-label {
+    padding-left: 10px;
+  }
+  .user-page .account .main-item .transaction-grid .transaction-card .transaction-details .detail-info {
+    padding-left: 10px;
+  }
   .user-page .account .main-item .transaction-grid .transaction-card .grid-row .grid-row-full {
     left: 79%;
     margin-top: -28px;
